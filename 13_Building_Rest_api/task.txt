@@ -1,0 +1,10 @@
+Building REST api
+
+GET /users --> Render Html document
+GET /api/users --> list all users
+GET /api/users/{id} --> get user by id
+GET /api/users/1 --> get user by id 1
+POST /api/users --> create new user
+PATCH /api/users/{id} --> update user by id
+DELETE /api/users/{id} --> delete user by id
+PUT /api/users/{id} --> update user by id
