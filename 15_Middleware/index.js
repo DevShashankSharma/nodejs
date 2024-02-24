@@ -41,7 +41,9 @@ app.get("/users", (req, res) => {
 })
 
 app.get("/api/users", (req, res) => {
-    console.log("I am in get api", req.MyUserName, req.query)
+    // console.log("I am in get api", req.MyUserName, req.query)
+    console.log(req.headers)
+    res.setHeader('x-myName',"Shivam") //! custom header ---> always add 'x-' in front of header for good practice
     res.json(users)
 })
 
