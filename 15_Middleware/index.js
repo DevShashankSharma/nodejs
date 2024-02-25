@@ -47,18 +47,30 @@ app.get("/api/users", (req, res) => {
     res.json(users)
 })
 
+app.get("/api/users/:id", (req, res) => { 
+    const id = Number(req.params.id)
+    const user = users.find(user => user.id === id)
+    if(!user) {
+        return res.status(404).send({ status: "Failed to find user" })
+    }
+    res.json(user)
+})
+
 app.post("/api/users", (req, res) => {
     let body = req.body
+    if(!body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title || !body.id || !body) {
+        return res.status(400).send({ status: "Failed to create new user" })
+    }
     users.push({
         id: users.length + 1,
         ...body
     })
     fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err) => {
         if (err) {
-            return res.send({ status: "Failed to create new user" })
+            return res.status(500).send({ status: "Failed to create new user" })
         }
         else {
-            return res.send({ status: "Successfully new user created" })
+            return res.status(201).send({ status: "Successfully new user created" })
         }
     })
 })
