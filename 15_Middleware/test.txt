@@ -1,0 +1,4 @@
+Way to use mongoose in node js
+   --> Schema - Define the structure
+   --> Model - Define the operations
+   --> CRUD operations
