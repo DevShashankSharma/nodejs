@@ -12,9 +12,10 @@ const handleGenerateNewShortURL = async (req, res) => {
         redirectURL: body.URL,
         visitedHistory: [],
     });
-    return res
-        .status(201)
-        .send({ status: "Successfully new short URL created", shortID: shortID });
+    return res.render("Home", { id: shortID });
+    // return res
+    //     .status(201)
+    //     .send({ status: "Successfully new short URL created", shortID: shortID });
 };
 
 const handleGetAnalytics = async (req, res) => {
